@@ -7,18 +7,20 @@ import seaborn as sns
 class SobolEstimator:
     """
     Classe pour l'estimation des indices de Sobol selon la méthode Pick-and-Freeze
-    Implémente l'estimateur T^u_{N,Cl} de l'article
+    Implémente l'estimateur T^u_{N,Cl}
     """
     
-    def __init__(self, model: Callable, d: int):
+    def __init__(self, model: Callable, d: int, N: int):
         """
         Parameters:
         -----------
         model : fonction à analyser Y = f(X1, ..., Xd)
         d : nombre de variables d'entrée
+        N : taille de l'échantillon
         """
         self.model = model
         self.d = d
+        self.N = N
     
     def generate_samples(self, N: int, distribution='uniform'):
         """
